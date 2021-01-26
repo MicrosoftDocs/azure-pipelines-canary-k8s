@@ -1,0 +1,135 @@
+bemagazi@bemagazid5520:/mnt/c/Users/bemagazi/OneDrive - Microsoft/Git Repos/bmagdemo/canary$ az aks create --resource-group bmag-demo-aks-canary --name bmag-
+canary-demo --node-count 1 --enable-addons monitoring --generate-ssh-keys
+AAD role propagation done[############################################]  100.0000%{
+  "aadProfile": null,
+  "addonProfiles": {
+    "KubeDashboard": {
+      "config": null,
+      "enabled": false,
+      "identity": null
+    },
+    "omsagent": {
+      "config": {
+        "logAnalyticsWorkspaceResourceID": "/subscriptions/89ee35c8-3cb3-4fc4-b2f9-6ce10a6ad213/resourcegroups/defaultresourcegroup-scus/providers/microsoft.operationalinsights/workspaces/defaultworkspace-89ee35c8-3cb3-4fc4-b2f9-6ce10a6ad213-scus"
+      },
+      "enabled": true,
+      "identity": {
+        "clientId": "55fb45bc-f17b-42ff-b21b-670fefa75a88",
+        "objectId": "66a5dbcd-352e-486c-8348-6b94e9339334",
+        "resourceId": "/subscriptions/89ee35c8-3cb3-4fc4-b2f9-6ce10a6ad213/resourcegroups/MC_bmag-demo-aks-canary_bmag-canary-demo_southcentralus/providers/Microsoft.ManagedIdentity/userAssignedIdentities/omsagent-bmag-canary-demo"
+      }
+    }
+  },
+  "agentPoolProfiles": [
+    {
+      "availabilityZones": null,
+      "count": 1,
+      "enableAutoScaling": null,
+      "enableNodePublicIp": false,
+      "maxCount": null,
+      "maxPods": 110,
+      "minCount": null,
+      "mode": "System",
+      "name": "nodepool1",
+      "nodeImageVersion": "AKSUbuntu-1804-2021.01.06",
+      "nodeLabels": {},
+      "nodeTaints": null,
+      "orchestratorVersion": "1.18.14",
+      "osDiskSizeGb": 128,
+      "osDiskType": "Managed",
+      "osType": "Linux",
+      "powerState": {
+        "code": "Running"
+      },
+      "provisioningState": "Succeeded",
+      "proximityPlacementGroupId": null,
+      "scaleSetEvictionPolicy": null,
+      "scaleSetPriority": null,
+      "spotMaxPrice": null,
+      "tags": null,
+      "type": "VirtualMachineScaleSets",
+      "upgradeSettings": null,
+      "vmSize": "Standard_DS2_v2",
+      "vnetSubnetId": null
+    }
+  ],
+  "apiServerAccessProfile": null,
+  "autoScalerProfile": null,
+  "diskEncryptionSetId": null,
+  "dnsPrefix": "bmag-canar-bmag-demo-aks-ca-89ee35",
+  "enablePodSecurityPolicy": null,
+  "enableRbac": true,
+  "fqdn": "bmag-canar-bmag-demo-aks-ca-89ee35-b0ac51db.hcp.southcentralus.azmk8s.io",
+  "id": "/subscriptions/89ee35c8-3cb3-4fc4-b2f9-6ce10a6ad213/resourcegroups/bmag-demo-aks-canary/providers/Microsoft.ContainerService/managedClusters/bmag-canary-demo",
+  "identity": {
+    "principalId": "03097115-3e38-479c-acfc-14b6ad651783",
+    "tenantId": "72f988bf-86f1-41af-91ab-2d7cd011db47",
+    "type": "SystemAssigned",
+    "userAssignedIdentities": null
+  },
+  "identityProfile": {
+    "kubeletidentity": {
+      "clientId": "0012ee33-3816-4d72-aecf-61a1809f49a8",
+      "objectId": "37a58b19-c554-4344-80fd-dc0695c8d229",
+      "resourceId": "/subscriptions/89ee35c8-3cb3-4fc4-b2f9-6ce10a6ad213/resourcegroups/MC_bmag-demo-aks-canary_bmag-canary-demo_southcentralus/providers/Microsoft.ManagedIdentity/userAssignedIdentities/bmag-canary-demo-agentpool"
+    }
+  },
+  "kubernetesVersion": "1.18.14",
+  "linuxProfile": {
+    "adminUsername": "azureuser",
+    "ssh": {
+      "publicKeys": [
+        {
+          "keyData": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQC9L1SebJXOyzPnHfSu6ykupti0+KFzu5HcsvjgmjwbiWXrWqlTlt/CHQpPoUF2gMdoMa/YsRTBtkL+xchoKoknTZIdwmHybxOTuSjHlpEMseiGwDnDRVDYlEIxHKeA1w4z2BPD4Iy75W0LLDAtQjI4rrAJ+pTCc1oHlDeQbqV1IqCMbNror5JjdWhbiVI7XFCWCel6lFzYTBUf4M2q8x1kkj/TBulF0kz9M6j8GWsDwBkr5dJ7N9KHemvdnOuMY2ZRbJ/cDcBocG3/25/PzxpdgfBNWvJhOOVS9ELJfYQp76v3SAwzG5nm6pWjs2ASdZ7jxmLyiHELco12sCKCh5ZDMIo37mUk7HffyRBuQRtH6UF/jmQ1bA5VUuzCKnZgjZem9HctR1fhHoIPrBjmQPS2TzxcRVVSvRTYofZnqUyenQKOyaMM9cY8qJC3qX4qGhiifHjXYqdJeUG74TxtDElq8gvs9mzoLX4snV226umiJqCDyz2jx5jVzP2Bcj2TSr/M2PkdcpMaoD8hVomqbBY4Mmx4UyUpUhfMZYrZwf+R00M3VkvD25xFXjpNP/fEN8FBpHkObdH3YA+rs0A8MYni8ydDo2TmwyY9SBnqAvsbzZjyiwp73tqiEf7Lo7YkbsLasw29IpXK+MafFFjwOYWolrxnPKWeRCgkzZoWmKrZoQ== bemagazi@microsoft.com\n"
+        }
+      ]
+    }
+  },
+  "location": "southcentralus",
+  "maxAgentPools": 10,
+  "name": "bmag-canary-demo",
+  "networkProfile": {
+    "dnsServiceIp": "10.0.0.10",
+    "dockerBridgeCidr": "172.17.0.1/16",
+    "loadBalancerProfile": {
+      "allocatedOutboundPorts": null,
+      "effectiveOutboundIps": [
+        {
+          "id": "/subscriptions/89ee35c8-3cb3-4fc4-b2f9-6ce10a6ad213/resourceGroups/MC_bmag-demo-aks-canary_bmag-canary-demo_southcentralus/providers/Microsoft.Network/publicIPAddresses/a803a5cd-8488-4cdd-83c2-17f63c3ca463",
+          "resourceGroup": "MC_bmag-demo-aks-canary_bmag-canary-demo_southcentralus"
+        }
+      ],
+      "idleTimeoutInMinutes": null,
+      "managedOutboundIps": {
+        "count": 1
+      },
+      "outboundIpPrefixes": null,
+      "outboundIps": null
+    },
+    "loadBalancerSku": "Standard",
+    "networkMode": null,
+    "networkPlugin": "kubenet",
+    "networkPolicy": null,
+    "outboundType": "loadBalancer",
+    "podCidr": "10.244.0.0/16",
+    "serviceCidr": "10.0.0.0/16"
+  },
+  "nodeResourceGroup": "MC_bmag-demo-aks-canary_bmag-canary-demo_southcentralus",
+  "powerState": {
+    "code": "Running"
+  },
+  "privateFqdn": null,
+  "provisioningState": "Succeeded",
+  "resourceGroup": "bmag-demo-aks-canary",
+  "servicePrincipalProfile": {
+    "clientId": "msi",
+    "secret": null
+  },
+  "sku": {
+    "name": "Basic",
+    "tier": "Free"
+  },
+  "tags": null,
+  "type": "Microsoft.ContainerService/ManagedClusters",
+  "windowsProfile": null
+}
