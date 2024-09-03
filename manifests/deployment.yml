@@ -13,14 +13,43 @@ spec:
     metadata:
       annotations:
         prometheus.io/scrape: "true"
+        prometheus.io/port: "8000"
       labels:
         app: sampleapp
     spec:
       containers:
       - name: sampleapp
-        #replace <foobar> with your container registry. Example: contosodemo.azurecr.io
-        image: <foobar>/azure-pipelines-canary-k8s
+        # Replace <your-container-registry> with your actual container registry
+        image: <your-container-registry>/azure-pipelines-canary-k8s:latest
         imagePullPolicy: Always
         ports:
         - containerPort: 8000
         - containerPort: 8080
+        env:
+        - name: SUCCESS_RATE
+          value: "50"
+        - name: HOST
+          value: "0.0.0.0"
+        - name: PORT
+          value: "8080"
+        - name: PROMETHEUS_PORT
+          value: "8000"
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "250m"
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 8080
+          initialDelaySeconds: 30
+          periodSeconds: 10
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 8080
+          initialDelaySeconds: 5
+          periodSeconds: 10

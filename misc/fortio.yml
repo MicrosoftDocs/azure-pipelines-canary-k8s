@@ -1,9 +1,14 @@
-apiVersion: apps/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: fortio
+  labels:
+    app: fortio
 spec:
   replicas: 1
+  selector:
+    matchLabels:
+      app: fortio
   template:
     metadata:
       labels:
@@ -11,10 +16,29 @@ spec:
     spec:
       containers:
       - name: fortio
-        image: fortio/fortio:latest_release
+        image: fortio/fortio:1.13.1 # Use a specific version instead of latest
         imagePullPolicy: Always
         ports:
         - containerPort: 8080
           name: http-fortio
         - containerPort: 8079
           name: grpc-ping
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "250m"
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        livenessProbe:
+          httpGet:
+            path: /healthz
+            port: 8080
+          initialDelaySeconds: 30
+          periodSeconds: 10
+        readinessProbe:
+          httpGet:
+            path: /ready
+            port: 8080
+          initialDelaySeconds: 5
+          periodSeconds: 10
