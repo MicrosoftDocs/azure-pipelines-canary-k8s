@@ -25,5 +25,5 @@ spec:
         ports:
         - containerPort: 8000
         - containerPort: 8080
-      imagePullSecrets:
-      - name: my-acr-secret
+      # imagePullSecrets:
+      # - name: my-acr-secret
