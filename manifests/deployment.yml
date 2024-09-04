@@ -13,14 +13,17 @@ spec:
     metadata:
       annotations:
         prometheus.io/scrape: "true"
+        prometheus.io/port: "8000"
       labels:
         app: sampleapp
     spec:
       containers:
       - name: sampleapp
-        #replace <foobar> with your container registry. Example: contosodemo.azurecr.io
-        image: <foobar>/azure-pipelines-canary-k8s
+        # Replace <your-container-registry> with your actual container registry
+        image: <your-container-registry>.azurecr.io/sampleapp:latest
         imagePullPolicy: Always
         ports:
         - containerPort: 8000
         - containerPort: 8080
+      # imagePullSecrets:
+      # - name: my-acr-secret

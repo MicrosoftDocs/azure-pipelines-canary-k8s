@@ -3,10 +3,15 @@ kind: ServiceMonitor
 metadata:
   name: sampleapp
   labels:
+    app: sampleapp
     release: sampleapp
+  annotations:
+    description: "ServiceMonitor for sampleapp"
 spec:
   selector:
     matchLabels:
       app: sampleapp
   endpoints:
   - port: metrics
+    interval: 30s
+    scrapeTimeout: 10s
