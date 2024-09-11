@@ -4,21 +4,10 @@ metadata:
   name: sampleapp
   labels:
     app: sampleapp
-    tier: backend
-    version: v1
-  annotations:
-    prometheus.io/scrape: "true"
-    prometheus.io/port: "8000"
 spec:
   selector:
     app: sampleapp
   ports:
-  - name: metrics
-    port: 8000
-    protocol: TCP
-    targetPort: 8000
-  - name: http
-    port: 8080
-    protocol: TCP
-    targetPort: 8080
-  type: ClusterIP
+    - protocol: TCP
+      port: 80
+      targetPort: 8000
