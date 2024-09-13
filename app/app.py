@@ -6,7 +6,7 @@ from flask import Flask
 import logging
 
 # Constants
-SUCCESS_RATE = int(os.getenv('SUCCESS_RATE', 50))
+SUCCESS_RATE = int(os.getenv('SUCCESS_RATE', 20))
 HOST = os.getenv('HOST', '0.0.0.0')
 PORT = int(os.getenv('PORT', 8080))
 
